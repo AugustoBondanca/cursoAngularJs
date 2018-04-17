@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="appAngular">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Controller Atributos e funções</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+
+<body ng-controller="Principal as ctl">
+
+    Váriavel mensagem {{ctl.mensagem}}
+    <br />
+    <button ng-click="ctl.alterarMensagem()">
+        Alterar Mensagem
+    </button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript">
+        angular.module('appAngular', [])
+            .controller('Principal', [function () {
+
+                var self = this;
+
+                self.mensagem = 'vindo do controller';
+                self.alterarMensagem = function () {
+                    self.mensagem = 'mensagem Alterada';
+                };
+            }]);
+
+    </script>
+
+</body>
+
+</html>
