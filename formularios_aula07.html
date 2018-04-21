@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="appAngular">
+
+<head>
+    <title>Controller Atributos e funções</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <meta charset="utf-8" />
+
+
+</head>
+
+<body ng-controller="Principal as ctl">
+    <!-- Conteúdo da View -->
+    <h2>Formulário - parte 1</h2>
+    <form ng-submit="ctl.submit1()">
+        <input type="text" ng-model="ctl.nome" placeholder="informe o nome">
+        <input type="text" ng-model="ctl.curso" placeholder="informe o curso">
+        <input type="submit" value="submit 1">
+    </form>
+
+    <h2>Formulário - parte 2</h2>
+    <form ng-submit="ctl.submit2()">
+        <input type="text" ng-model="ctl.aluno.nome" placeholder="informe o nome">
+        <input type="text" ng-model="ctl.aluno.curso" placeholder="informe o curso">
+        <input type="submit" value="submit2">
+    </form>
+
+
+    <!-- definição da Api e Controller -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript">
+        angular.module('appAngular', [])
+            .controller('Principal', [function () {
+
+                var self = this;
+                //modo explicito
+                self.submit1 = function () {
+                    var aluno = { nome: self.nome, curso: self.curso };
+                    alert('Dados do primeiro formulario: \n' + aluno.nome + '\n' + aluno.curso);
+                };
+                self.submit2 = function () {
+
+                    alert('Dados do segundo formulario: \n' + self.aluno.nome + '\n' + self.aluno.curso);
+
+                };
+
+            }]);
+
+    </script>
+
+</body>
+
+</html>
