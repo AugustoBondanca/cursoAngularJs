@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="appAngular">
+
+<head>
+    <title>Controller Atributos e funções</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <meta charset="utf-8" />
+    <style>
+    </style>
+
+</head>
+
+<body ng-controller="Principal as ctl">
+    <!-- Conteúdo da View -->
+    <h2>Quais cursos deseja realizar?</h2>
+    <form name="FormCursos">
+        <div ng-repeat="curso in ctl.cursos">
+            <label>{{curso.descricao}}
+                <input type="checkbox" ng-model="curso.selecionado" />
+            </label>{{curso.selecionado}}
+            <br />
+        </div>
+    </form>
+
+
+
+    <!-- definição da Api e Controller -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+    <script type="text/javascript">
+        angular.module('appAngular', [])
+            .controller('Principal', [function () {
+
+                var self = this;
+
+                self.cursos = [
+                    { descricao: 'Java', selecionado: true },
+                    { descricao: 'JavaScript', selecionado: false },
+                    { descricao: 'NodeJs', selecionado: false }
+                ];
+
+            }]);
+
+    </script>
+
+</body>
+
+</html>
