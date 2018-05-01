@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="appAngular">
+
+<head>
+    <title>Controller Atributos e funções</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <meta charset="utf-8" />
+    <style>
+    </style>
+
+</head>
+
+<body ng-controller="Principal as ctl">
+    <!-- Conteúdo da View -->
+    <h2>Exemplos de serviços prontos</h2>
+    <button ng-click="ctl.mostrarLog()">Mostrar Log</button>
+
+
+
+
+    <!-- definição da Api e Controller -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript">
+
+        //a ordem da injeção de depêndencia é importante
+        angular.module('appAngular', [])
+            .controller('Principal', ['$location', '$window', function ($location, $window) {
+                var self = this;
+
+                self.mostrarLog = function () {
+                    var url = $location.url();
+                    var absUrl = $location.absUrl();
+                    var protocol = $location.protocol();
+
+                    var mensagem = 'URL: ' + url + '\nURL Absoluto: ' + absUrl + '\nPROTOCOLO: ' + protocol;
+
+                    $window.alert(mensagem);
+                };
+            }]);
+    </script>
+
+</body>
+
+</html>

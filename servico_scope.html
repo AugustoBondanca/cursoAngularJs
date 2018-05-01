@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="appAngular">
+
+<head>
+    <title>Controller Atributos e funções</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <meta charset="utf-8" />
+    <style>
+    </style>
+
+</head>
+
+<body>
+    <!-- Conteúdo da View -->
+    <h2>Verificação do scopo</h2>
+    <div ng-controller="Primeiro">
+        <p>{{mensagem}}
+            <br/>{{tipo}}</p>
+    </div>
+    <div ng-controller="Segundo">
+        <p>{{mensagem}}
+            <br/>{{tipo}}</p>
+    </div>
+    <div ng-controller="Terceiro">
+        <p>{{mensagem}}
+            <br/>{{tipo}} </p>
+    </div>
+
+    <!-- definição da Api e Controller -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+    <script type="text/javascript">
+        angular.module('appAngular', [])
+            .controller('Primeiro', function ($scope) {
+                $scope.mensagem = 'Primeiro Escopo';
+                $scope.tipo = 'Primeiro';
+            })
+            .controller('Segundo', function ($scope) {
+                $scope.mensagem = 'Segundo Escopo';
+            })
+            .controller('Terceiro', function ($scope) {
+                $scope.mensagem = 'Terceiro Escopo';
+                $scope.tipo = 'Terceiro';
+            })
+    </script>
+
+</body>
+
+</html>
